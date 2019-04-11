@@ -7,8 +7,24 @@ def da_boas_vindas
   name
 end
 
+def sortea_arma
+    random = rand(6)
+    case random
+    when 1
+        puts sniper = [['AWM',82],['VSS',50],['SKS',80]]
+    when 2
+        puts rifle = [['M4A1',53],['Ak',61],['Famas',53]]
+    when 3
+        puts subMetralhadora = [['MP5',48],['p90',48],['UMP',48]]
+    when 4
+        puts shotgun = [['SPAS',97],['Winchester87',94],['Cheline',100]]
+    when 5
+        putspistol = [['USP',45],['Desert Eagle',63],['3.8tão',50]]
+    end
+end
+
 def sortea_obstaculos_premium
-  
+  sortea_arma
 end
 
 def gera_mapa
@@ -25,6 +41,7 @@ def gera_mapa
   vertical
 end
 
-name = da_boas_vindas
-mapa = gera_mapa
-puts mapa
+#name = da_boas_vindas
+#mapa = gera_mapa
+#puts mapa
+sortea_arma
