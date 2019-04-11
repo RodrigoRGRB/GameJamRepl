@@ -17,6 +17,7 @@ end
 
 def sortea_arma
     random = rand(6)
+    puts random
     case random
     when 1
         da_arma [['AWM',82],['VSS',50],['SKS',80]]
