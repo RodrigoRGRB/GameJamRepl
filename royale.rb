@@ -1,66 +1,59 @@
 require_relative 'ui'
 
 def da_boas_vindas
-  puts "Hello, What's your name?"
-  name = gets.strip
-  puts "you're a traveller and your name is #{name}"
+  name = 'Rodrigo'
+  puts "you're a traveller and your name is #{name} a bandit"
+  puts "Your father left you before you were born, and your mother is a junkie."
   name
 end
 
-def da_arma(arma)
-    random = rand(arma.size)
-    puts random
-    arma = arma[random]
-end
-
-def sortea_arma
-    random = rand(5)
-    puts random
-    case random
-    when 0
-        da_arma [['AWM',82],['VSS',50],['SKS',80]]
-    when 1
-        da_arma [['M4A1',53],['Ak',61],['Famas',53]]
-    when 2
-        da_arma [['MP5',48],['p90',48],['UMP',48]]
-    when 3
-        da_arma [['SPAS',97],['Winchester87',94],['Cheline',100]]
-    when 4
-        da_arma [['USP',45],['Desert Eagle',63],['3.8tão',50]]
-    end
-end
-
-
-def sortea_obstaculos_premium
-    random = rand(4)
-    puts random
-    case random
-    when 0
-        's'
-    when 1
-        'i'
-    when 2
-        'n'
-    when 3
-        'n'
-    end
-end
-
-def gera_mapa
-  lateral = ""
-  vertical = []
-  for x in 1..10
-    for x in 1..10
-      lateral += sortea_obstaculos_premium+" "
-    end
-    vertical << lateral
-    lateral = ""
+def resultado_dado(alcancar,soma)
+  if soma >= alcancar
+    puts "Exito precisava chegar em #{alcancar} e chegou em #{soma}"
+  else
+    puts "Falha precisava chegar em #{alcancar} e chegou em #{soma}"
   end
-  puts vertical[0].size
-  vertical
 end
 
-name = da_boas_vindas
-mapa = gera_mapa
-puts mapa
-arma = sortea_arma
+def roubar(dificuldade, valor_alcancar)
+  alcancar = dificuldade * valor_alcancar
+  soma = 0
+  for n in (1..dificuldade)
+    soma += rand(7) 
+  end
+  resultado_dado(alcancar, soma)
+  soma
+end
+
+
+nome = da_boas_vindas
+dia = 1
+status = ''
+dinheiro = 10
+
+loop do
+  puts "É um belo dia, primeiro dia de escola, seu amigo te chama para matar aula e ir roubar os velhinhos na praça, o que deseja fazer? \n1(não aceitar e ficar na escola) 2(aceitar e roubar os velhinhos)"
+    resp = gets.strip
+    if (resp == '1') || (resp == "2")
+      case resp
+      when '1'
+        status = 'aluno'
+        dinheiro = dinheiro
+      when '2'
+        status = 'bandido'
+        dinheiro_tentativa = roubar(2,2)
+        dinheiro += 10
+      end
+      break
+    else 
+      next
+    end
+end
+
+puts "#{dia} #{status} #{dinheiro}"
+
+
+
+
+ 
+
